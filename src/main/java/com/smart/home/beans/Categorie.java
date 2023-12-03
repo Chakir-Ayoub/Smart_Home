@@ -24,6 +24,6 @@ public class Categorie implements Serializable {
 	private Long id;
 	private String label;
 	
-	@OneToMany(cascade = CascadeType.ALL,targetEntity = Appareil.class,fetch = FetchType.LAZY,orphanRemoval = true,mappedBy = "category")
+	@OneToMany(cascade = CascadeType.ALL,targetEntity = Appareil.class,fetch = FetchType.LAZY,mappedBy = "category")
 	List<Appareil> appareils=new ArrayList<>();
 }

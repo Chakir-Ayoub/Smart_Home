@@ -2,13 +2,16 @@ package com.smart.home.service.copy;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.smart.home.beans.Appareil;
 import com.smart.home.dao.ApperialDao;
 
+@Service
 public class ApperialService {
 	
 	private ApperialDao apperialDao;
-	private ApperialService(ApperialDao apperialDao) {
+	public ApperialService(ApperialDao apperialDao) {
 		this.apperialDao=apperialDao;
 	}
 	
