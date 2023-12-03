@@ -30,6 +30,8 @@ public class Appareil implements Serializable {
 	
 	@ManyToOne
 	@JsonIgnore
-	private Categorie categorie;
+	private Categorie category;
+	
+	
 	
 }
