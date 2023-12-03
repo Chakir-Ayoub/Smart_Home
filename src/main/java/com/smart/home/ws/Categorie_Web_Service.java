@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,11 +14,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.smart.home.beans.Appareil;
 import com.smart.home.beans.Categorie;
 import com.smart.home.service.copy.Categoris;
 
 @RestController
 @RequestMapping("categorie")
+@CrossOrigin("http://localhost:4200/")
 public class Categorie_Web_Service {
 	
 	private Categoris categoris;
@@ -49,5 +52,11 @@ public class Categorie_Web_Service {
 	@DeleteMapping(path = "/{id}")
 	public void delete(@PathVariable long id) {
 		this.categoris.Delete(id);
+	}
+	
+	@PostMapping(path = "/{id}")
+	public Categorie Add(@PathVariable Long id,@RequestBody Appareil appareil) {
+		Categorie categorie=GetById(id);
+		return this.categoris.AddAppariel(categorie,appareil);
 	}
 }

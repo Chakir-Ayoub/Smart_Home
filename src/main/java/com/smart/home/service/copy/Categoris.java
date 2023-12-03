@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.smart.home.beans.Appareil;
 import com.smart.home.beans.Categorie;
 import com.smart.home.dao.CategorieDao;
 
@@ -38,5 +39,10 @@ public class Categoris {
 		categorie2.setAppareils(categorie.getAppareils());
 		categorie2.setLabel(categorie.getLabel());
 		return this.categorieDao.save(categorie2);
+	}
+	
+	public Categorie AddAppariel(Categorie categorie,Appareil appareil){
+		 categorie.AjouterAppareil(categorie, appareil);
+		 return this.categorieDao.save(categorie);
 	}
 }
