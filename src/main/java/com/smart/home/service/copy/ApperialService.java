@@ -34,7 +34,6 @@ public class ApperialService {
 	
 	public Appareil UpdateAppareil(Appareil appareil,long id) {
 		Appareil appareil2=this.apperialDao.findById(id).get();
-		appareil2.setCategory(appareil.getCategory());
 		appareil2.setDescription(appareil.getDescription());
 		appareil2.setLabel(appareil.getLabel());
 		appareil2.setState(appareil.isState());
