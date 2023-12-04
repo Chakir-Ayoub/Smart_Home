@@ -45,4 +45,9 @@ public class Categoris {
 		 categorie.AjouterAppareil(categorie, appareil);
 		 return this.categorieDao.save(categorie);
 	}
+	
+	public Categorie DeleteAppariel(Categorie categorie,Appareil appareil){
+		 categorie.SupperimerAppareil(appareil);
+		 return this.categorieDao.save(categorie);
+	}
 }

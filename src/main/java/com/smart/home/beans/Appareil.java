@@ -27,7 +27,7 @@ public class Appareil implements Serializable {
 	private String label;
 	private String description;
 	private boolean state;
-	
+	private String image;
 	@ManyToOne
 	@JsonIgnore
 	private Categorie category;

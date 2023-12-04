@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.smart.home.beans.Appareil;
 import com.smart.home.beans.Categorie;
+import com.smart.home.dao.ApperialDao;
 import com.smart.home.service.copy.Categoris;
 
 @RestController
@@ -24,9 +25,10 @@ import com.smart.home.service.copy.Categoris;
 public class Categorie_Web_Service {
 	
 	private Categoris categoris;
-	
-	public Categorie_Web_Service(Categoris categoris) {
+	private ApperialDao apperialDao;
+	public Categorie_Web_Service(Categoris categoris,ApperialDao apperialDao) {
 		this.categoris=categoris;
+		this.apperialDao=apperialDao;
 	}
 	
 	@GetMapping("/{id}")
@@ -59,4 +61,13 @@ public class Categorie_Web_Service {
 		Categorie categorie=GetById(id);
 		return this.categoris.AddAppariel(categorie,appareil);
 	}
+	
+	@DeleteMapping(path = "/{id}/{ida}")
+	public Categorie Remove(@PathVariable Long id,@PathVariable Long ida) {
+		Categorie categorie=GetById(id);
+		Appareil appareil=this.apperialDao.findById(ida).get();
+		return this.categoris.DeleteAppariel(categorie, appareil);
+	}
+	
+	
 }
